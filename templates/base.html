@@ -1,0 +1,64 @@
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width initial-scale=1"/>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Web Scrapper</title>
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper container">
+            <a href="/" class="brand-logo">Web Scrapper</a>
+            <ul id="nav-mobile" class="right">
+                <li><a href="/">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+    <div class="container">
+        <h1 style="text-align: center">Search for whatever you need with this Web Scrapper.</h1>
+        <div class="row">
+            <div class="col s4">
+                <div class="center">
+                    <i class="large material-icons" style="color: #ee6e73">flash_on</i>
+                    <p>Fast craigslist web scrapper</p>
+                    <p class="light center" > Scrap away right with a beautiful GUI.</p>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="center">
+                    <i class="large material-icons" style="color: orange">camera</i>
+                    <p>Set your priority</p>
+                    <p class="light center" > We built in functionality based on your priority. </p>
+                </div>
+            </div>
+            <div class="col s4">
+                <div class="center">
+                    <i class="large material-icons" style="color: blue">chrome_reader_mode</i>
+                    <p>A light-weight front design</p>
+                    <p class="light center" >We build this with <span style="color: red; font-size: 1rem" >♥</span></p>
+                </div>
+            </div>
+        </div>
+
+        <form autocomplete="off" action="{% url 'new_search' %}" method="post" >
+            {% csrf_token %}
+            <input placeholder="Search" name="search" type="text" />
+            <button class="btn waves-effect waves-light" name="Submit" type="submit">Submit
+                <i class="material-icons right">send</i>
+            </button>
+        </form>
+
+        {% block content %}
+
+        {% endblock content %}
+    </div>
+
+    <!--   Javascript  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+</body>
+</html>
